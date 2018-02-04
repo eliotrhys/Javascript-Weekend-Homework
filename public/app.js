@@ -11,29 +11,22 @@ var requestComplete = function(){
   var BKVInfo = JSON.parse(jsonString);
   fuckArray = BKVInfo.data.results;
   populateGrid(fuckArray);
-  populatePie(fuckArray);
-  // new PieChart();
+  // populatePie(fuckArray);
+  new PieChart();
 }
 
-var populatePie = function(BKV_comics){
-  var all_prices = [];
-
-  for (comic of BKV_comics){
-    var smallArray = comic.prices;
-
-    for (price of smallArray){
-      all_prices.push(price.price);
-    }
-  }
-
-  // var final_tally = [];
-  var pie = new PieChart(all_prices);
-
-  // for (x in all_prices){
-  //   var whoKnows = all_prices.filter(item => item == x.value).length;
-  //   final_tally.push(whoKnows);
-  // }
-}
+// var populatePie = function(BKV_comics){
+//   var all_prices = [];
+//
+//   for (comic of BKV_comics){
+//     var smallArray = comic.prices;
+//
+//     for (price of smallArray){
+//       all_prices.push(price.price);
+//     }
+//   }
+//   var pie = new PieChart(all_prices);
+// }
 
 function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
@@ -90,7 +83,7 @@ var populateGrid = function(BKV_comics){
 }
 
 var app = function(){
-  var url = 'https://gateway.marvel.com:443/v1/public/creators/190/comics?ts=1&limit=15&apikey=6c92e56a5d9dc2a50364be82b90792dd&hash=516fd98028f4197461503a883d78786d';
+  var url = 'https://gateway.marvel.com:443/v1/public/creators/190/comics?ts=1&limit=35&apikey=6c92e56a5d9dc2a50364be82b90792dd&hash=516fd98028f4197461503a883d78786d';
   makeRequest(url, requestComplete);
 }
 
