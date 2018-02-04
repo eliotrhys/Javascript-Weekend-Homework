@@ -13,35 +13,53 @@ var requestComplete = function(){
   populateGrid(fuckArray);
 }
 
+function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
 var populateGrid = function(BKV_comics){
   var div = document.querySelector("#the_shop");
 
-  for (comic of BKV_comics){
+
+  var counter = 0
+
+  var populateDescription = function(para){
+    var displayDescription = document.querySelector("#the_description");
+    displayDescription.innerText = para.innerText;
+  }
+
+  var BKV_final = shuffle(BKV_comics);
+
+  for (comic of BKV_final){
+
+    counter ++;
     var subDiv = document.createElement("div");
+    var para = document.createElement("p");
+    para.innerText = comic.description;
+    para.setAttribute("class", "hide");
+    para.setAttribute("id", `description${counter}`)
     subDiv.setAttribute("class", "border");
-    subDiv.setAttribute("style", "hover: ");
-    // subDiv.setAttribute("onclick", "setDescription(comic.description)");
+    subDiv.setAttribute("onclick", populateDescription(para));
 
     var img = document.createElement("img");
     var imgBuilder = comic.thumbnail.path;
     var imgBuilder2 = comic.thumbnail.extension;
     var imgBuilt = `${imgBuilder}/portrait_xlarge.${imgBuilder2}`;
     img.src = imgBuilt;
-    img.setAttribute("style", "")
 
     var button = document.createElement("button");
     button.innerText = "BUY NOW!";
 
     subDiv.appendChild(img);
+    subDiv.appendChild(para);
     subDiv.appendChild(button);
     div.appendChild(subDiv);
   }
 }
-
-// var setDescription = function(description){
-//   var div = document.querySelector("#the_description");
-//   div.innerText = description;
-// }
 
 var app = function(){
   var url = 'https://gateway.marvel.com:443/v1/public/creators/190/comics?ts=1&limit=15&apikey=6c92e56a5d9dc2a50364be82b90792dd&hash=516fd98028f4197461503a883d78786d';

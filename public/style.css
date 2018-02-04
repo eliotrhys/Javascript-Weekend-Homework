@@ -5,6 +5,10 @@ body {
   background-color: #2b2b2b;
 }
 
+p {
+  font-size: 15px;
+}
+
 ::selection {
   background: #f7a33d;
 }
@@ -26,7 +30,7 @@ body {
 
 .content #the_header {
   grid-column: span 4;
-  font-size: 90px;
+  font-size: 40px;
 }
 
 .content #the_shop {
@@ -72,4 +76,8 @@ body {
 .content .border button:hover{
   transition: 0.3s ease;
   background-color: #f7a33d
+}
+
+.hide {
+   display: none;
 }
