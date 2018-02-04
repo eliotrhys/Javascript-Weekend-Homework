@@ -44,11 +44,19 @@ p {
   height: calc(100vh - 10px);
 }
 
+.content #the_description {
+  font-size: 17px;
+}
+
 .content .border {
   transition: 0.3s ease;
   background-color: rgba(43, 43, 43, .5);
   border-radius: 25px;
   align-self: center;
+}
+
+.content .border p {
+  font-size: 17px;;
 }
 
 .content .border img {
@@ -71,6 +79,17 @@ p {
   font-family: 'Righteous', cursive;
   padding: 10px;
   text-align: center;
+}
+
+.content .border .bluebutton {
+  font-size: 15px;
+  margin-top: 10px;
+  border: 2px solid #30dcff;
+}
+
+.content .border .bluebutton:hover {
+  transition: 0.3s ease;
+  background-color: #30dcff
 }
 
 .content .border button:hover{

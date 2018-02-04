@@ -23,8 +23,6 @@ function shuffle(a) {
 
 var populateGrid = function(BKV_comics){
   var div = document.querySelector("#the_shop");
-
-
   var counter = 0
 
   var populateDescription = function(para){
@@ -35,7 +33,6 @@ var populateGrid = function(BKV_comics){
   var BKV_final = shuffle(BKV_comics);
 
   for (comic of BKV_final){
-
     counter ++;
     var subDiv = document.createElement("div");
     var para = document.createElement("p");
@@ -51,12 +48,21 @@ var populateGrid = function(BKV_comics){
     var imgBuilt = `${imgBuilder}/portrait_xlarge.${imgBuilder2}`;
     img.src = imgBuilt;
 
+    var title = document.createElement("p");
+    title.innerText = comic.title;
+
     var button = document.createElement("button");
     button.innerText = "BUY NOW!";
 
+    var button2 = document.createElement("button");
+    button2.innerText = "+ to wishlist";
+    button2.setAttribute("class", "bluebutton");
+
     subDiv.appendChild(img);
+    subDiv.appendChild(title);
     subDiv.appendChild(para);
     subDiv.appendChild(button);
+    subDiv.appendChild(button2);
     div.appendChild(subDiv);
   }
 }
