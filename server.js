@@ -6,10 +6,6 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-app.get('/no', function (req, res) {
-  res.sendFile(path.join(__dirname + '/no.html'));
-});
-
 app.use(express.static('public'));
 
 var server = app.listen(3000, function () {

@@ -48,6 +48,10 @@ p {
   font-size: 17px;
 }
 
+.content #pie-chart {
+  grid-row: span 5;
+}
+
 .content .border {
   transition: 0.3s ease;
   background-color: rgba(43, 43, 43, .5);

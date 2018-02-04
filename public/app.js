@@ -11,6 +11,28 @@ var requestComplete = function(){
   var BKVInfo = JSON.parse(jsonString);
   fuckArray = BKVInfo.data.results;
   populateGrid(fuckArray);
+  populatePie(fuckArray);
+}
+
+var populatePie = function(BKV_comics){
+  var pie = new PieChart();
+  var all_prices = [];
+
+  for (comic of BKV_comics){
+    var smallArray = comic.prices;
+
+    for (price of smallArray){
+      all_prices.push(price.price);
+    }
+  }
+
+  var final_tally = [];
+
+  for (x in all_prices){
+    final_tally.push(all_prices.filter(item => item == x).length);
+  }
+
+  console.log(final_tally);
 }
 
 function shuffle(a) {
