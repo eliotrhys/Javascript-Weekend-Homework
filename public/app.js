@@ -12,10 +12,10 @@ var requestComplete = function(){
   fuckArray = BKVInfo.data.results;
   populateGrid(fuckArray);
   populatePie(fuckArray);
+  // new PieChart();
 }
 
 var populatePie = function(BKV_comics){
-  var pie = new PieChart();
   var all_prices = [];
 
   for (comic of BKV_comics){
@@ -26,13 +26,13 @@ var populatePie = function(BKV_comics){
     }
   }
 
-  var final_tally = [];
+  // var final_tally = [];
+  var pie = new PieChart(all_prices);
 
-  for (x in all_prices){
-    final_tally.push(all_prices.filter(item => item == x).length);
-  }
-
-  console.log(final_tally);
+  // for (x in all_prices){
+  //   var whoKnows = all_prices.filter(item => item == x.value).length;
+  //   final_tally.push(whoKnows);
+  // }
 }
 
 function shuffle(a) {
