@@ -79,7 +79,7 @@ var createThePie = function(array){
         name: "Single Issue",
         y: 20,
         color: "black"
-      }, target]
+      }]
     }]
   });
 }
