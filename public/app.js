@@ -11,22 +11,78 @@ var requestComplete = function(){
   var BKVInfo = JSON.parse(jsonString);
   fuckArray = BKVInfo.data.results;
   populateGrid(fuckArray);
-  // populatePie(fuckArray);
-  new PieChart();
+  createThePie(fuckArray);
+  // new PieChart();
 }
 
-// var populatePie = function(BKV_comics){
-//   var all_prices = [];
-//
-//   for (comic of BKV_comics){
-//     var smallArray = comic.prices;
-//
-//     for (price of smallArray){
-//       all_prices.push(price.price);
-//     }
-//   }
-//   var pie = new PieChart(all_prices);
-// }
+var NYC = function(name, y, color){
+  this.name = name;
+  this.y = y;
+  this.color = color;
+}
+
+var makeObjects = function(array){
+  var items = [50, 20, 14, 100, 78];
+  var item = items[Math.floor(Math.random()*items.length)];
+
+  var colours = ["green", "blue", "red", "orange", "yellow"];
+  var color = items[Math.floor(Math.random()*items.length)];
+
+  var testArray = [];
+
+  for (x of array){
+    var object = new NYC(x, item, color);
+    testArray.push(object);
+  }
+}
+
+var createThePie = function(array){
+  var all_prices = [];
+
+  for (comic of array){
+    var smallArray = comic.prices;
+    for (price of smallArray){
+      all_prices.push(price.price);
+    }
+  }
+
+  // console.log(all_prices);
+
+  var target = makeObjects(all_prices);
+
+  // console.log(target);
+
+  var container = document.querySelector('#pie-chart');
+  var chart = new Highcharts.Chart({
+    chart: {
+      type: 'pie',
+      backgroundColor: "black",
+      renderTo: container
+    },
+    title: {
+      text: 'Comic Sales By Type'
+    },
+    series: [{
+      name: 'Comic Type',
+      data: [{
+        name: 'Trade Paperback',
+        y: 74,
+        color: '#f7a33d'
+      },
+      {
+        name: "Compendium",
+        y: 25,
+        color: "#30dcff",
+        sliced: true
+      },
+      {
+        name: "Single Issue",
+        y: 20,
+        color: "black"
+      }, target]
+    }]
+  });
+}
 
 function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {

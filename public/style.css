@@ -104,7 +104,3 @@ p {
 .hide {
    display: none;
 }
-
-Highcharts.chart {
-  background-color: red;
-}
